@@ -96,4 +96,116 @@
             <div class="section">
                 <div class="section-header">📋 서식 목록</div>
                 <div class="section-content" id="formList">
-                    <div
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📂</div>
+                        <p>로딩 중...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">👁️ 미리보기</div>
+                <div class="section-content" id="previewArea">
+                    <div class="preview-empty">
+                        <div class="preview-empty-icon">👈</div>
+                        <p>왼쪽 목록에서 서식을 클릭하여<br>상세 정보를 확인하세요</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <strong>⚠️ 중요:</strong> 이 사이트는 전북특별자치도교육청의 비공식 서식 모음집입니다.<br>
+            서식의 모든 권리는 전북특별자치도교육청에 있습니다.
+        </footer>
+    </div>
+    
+    <script>
+        let allForms = [];
+        let filteredForms = [];
+        
+        function init() {
+            loadForms();
+            attachEventListeners();
+        }
+        
+        function attachEventListeners() {
+            document.getElementById('searchInput').addEventListener('keyup', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('typeFilter').addEventListener('change', applyFilters);
+            document.getElementById('resetBtn').addEventListener('click', resetFilters);
+        }
+        
+        function loadForms() {
+            fetch('forms.json')
+                .then(res => res.json())
+                .then(data => {
+                    allForms = data;
+                    console.log('✅ ' + allForms.length + '개의 서식을 로드했습니다.');
+                    applyFilters();
+                })
+                .catch(err => {
+                    console.error('❌ 데이터 로드 실패:', err);
+                    document.getElementById('formList').innerHTML = '<div class="empty-state"><p>⚠️ 서식을 불러올 수 없습니다.</p></div>';
+                });
+        }
+        
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const fileType = document.getElementById('typeFilter').value;
+            
+            filteredForms = allForms.filter(form => {
+                const matchSearch = !search || form.title.toLowerCase().includes(search) || form.description.toLowerCase().includes(search);
+                const matchCategory = !category || form.category === category;
+                const matchType = !fileType || form.file_type === fileType;
+                return matchSearch && matchCategory && matchType;
+            });
+            
+            displayForms(filteredForms);
+            document.getElementById('resultCount').textContent = filteredForms.length;
+        }
+        
+        function displayForms(forms) {
+            const listDiv = document.getElementById('formList');
+            if (forms.length === 0) {
+                listDiv.innerHTML = '<div class="empty-state"><p>검색 결과가 없습니다</p></div>';
+                return;
+            }
+            let html = '';
+            forms.forEach((form, index) => {
+                html += `<div class="form-card" data-index="${index}" onclick="showForm(${index})"><div class="form-title">${form.title}</div><div class="form-meta"><span class="badge badge-category">${form.category}</span><span class="badge badge-type">${form.file_type.toUpperCase()}</span><span>${form.date}</span></div></div>`;
+            });
+            listDiv.innerHTML = html;
+        }
+        
+        function showForm(index) {
+            const form = filteredForms[index];
+            if (!form) { console.error('❌ 서식을 찾을 수 없습니다:', index); return; }
+            
+            document.querySelectorAll('.form-card').forEach(el => el.classList.remove('active'));
+            document.querySelector(`[data-index="${index}"]`).classList.add('active');
+            
+            const preview = `<div><div class="preview-title">${form.title}</div><div class="preview-info"><div class="preview-info-row"><span class="preview-label">분류</span><span class="preview-value">${form.category} > ${form.subcategory}</span></div><div class="preview-info-row"><span class="preview-label">형식</span><span class="preview-value">${form.file_type.toUpperCase()}</span></div><div class="preview-info-row"><span class="preview-label">등록일</span><span class="preview-value">${form.date}</span></div><div class="preview-info-row"><span class="preview-label">출처</span><span class="preview-value">${form.source}</span></div></div><div class="preview-description"><strong>설명:</strong><br>${form.description}</div><div class="action-buttons"><a href="${form.download_url}" target="_blank" class="btn btn-primary">📥 다운로드</a><button class="btn btn-secondary" onclick="copyLink('${form.download_url}')">🔗 링크 복사</button></div></div>`;
+            
+            document.getElementById('previewArea').innerHTML = preview;
+            console.log('✅ 미리보기:', form.title);
+        }
+        
+        function copyLink(url) {
+            navigator.clipboard.writeText(url);
+            alert('링크가 복사되었습니다!');
+        }
+        
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            document.getElementById('previewArea').innerHTML = '<div class="preview-empty"><div class="preview-empty-icon">👈</div><p>왼쪽 목록에서 서식을 클릭하여<br>상세 정보를 확인하세요</p></div>';
+            applyFilters();
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -3,397 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="전북특별자치도교육청 서식 모음집입니다. 다양한 학교 행정 서식을 검색하고 다운로드할 수 있습니다.">
     <title>전북특별자치도교육청 서식 꾸러미</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            margin: 40px 0 60px;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            color: #1a237e;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        header p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 8px;
-        }
-        
-        .info-box {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            display: inline-block;
-            font-size: 0.9rem;
-            color: #666;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .controls-section {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        
-        .search-box {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .search-box input {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: #1a237e;
-        }
-        
-        .filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .filters label {
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .filters select,
-        .filters input[type="text"] {
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            background: white;
-        }
-        
-        .filters select:focus,
-        .filters input:focus {
-            outline: none;
-            border-color: #1a237e;
-            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-        }
-        
-        .reset-btn {
-            padding: 10px 20px;
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #333;
-            transition: all 0.3s;
-        }
-        
-        .reset-btn:hover {
-            background: #e8e8e8;
-            border-color: #999;
-        }
-        
-        .stats {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 15px;
-        }
-        
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .form-list-section {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-        }
-        
-        .section-header {
-            background: #1a237e;
-            color: white;
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        
-        .form-list {
-            padding: 20px;
-            overflow-y: auto;
-            max-height: 600px;
-        }
-        
-        .form-card {
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-        }
-        
-        .form-card:hover {
-            border-color: #1a237e;
-            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.15);
-            transform: translateY(-2px);
-        }
-        
-        .form-card.active {
-            background: #f8f9ff;
-            border-color: #1a237e;
-            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
-        }
-        
-        .form-title {
-            font-weight: 700;
-            color: #1a237e;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .form-meta {
-            display: flex;
-            gap: 10px;
-            font-size: 0.8rem;
-            color: #888;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .badge-category {
-            background: #e3f2fd;
-            color: #1a237e;
-        }
-        
-        .badge-type {
-            background: #f3e5f5;
-            color: #6a1b9a;
-        }
-        
-        .preview-section {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-        }
-        
-        .preview-content {
-            padding: 30px;
-            text-align: center;
-            color: #999;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .preview-active {
-            text-align: left;
-            color: #333;
-        }
-        
-        .preview-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #1a237e;
-            margin-bottom: 15px;
-        }
-        
-        .preview-info {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f5f5f5;
-            border-left: 4px solid #1a237e;
-            border-radius: 4px;
-        }
-        
-        .preview-info-row {
-            display: flex;
-            padding: 8px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .preview-info-row:last-child {
-            border-bottom: none;
-        }
-        
-        .preview-label {
-            font-weight: 600;
-            color: #1a237e;
-            width: 80px;
-        }
-        
-        .preview-value {
-            flex: 1;
-            color: #333;
-        }
-        
-        .preview-description {
-            margin: 20px 0;
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 25px;
-        }
-        
-        .btn {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        
-        .btn-primary {
-            background: #1a237e;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #0d1351;
-            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
-        }
-        
-        .btn-secondary {
-            background: #f5f5f5;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-        
-        .btn-secondary:hover {
-            background: #e8e8e8;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-        }
-        
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px 20px;
-            background: rgba(26, 35, 126, 0.05);
-            border-radius: 12px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .footer-note {
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-        
-        .footer-note strong {
-            color: #1a237e;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .controls-section {
-                padding: 15px;
-            }
-            
-            .filters {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .filters select {
-                width: 100%;
-            }
-            
-            .form-list {
-                max-height: 400px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; margin: 40px 0 60px; }
+        header h1 { font-size: 2.5rem; color: #1a237e; margin-bottom: 10px; }
+        header p { font-size: 1.1rem; color: #555; margin-bottom: 8px; }
+        .info-box { background: white; padding: 15px 20px; border-radius: 8px; display: inline-block; font-size: 0.9rem; color: #666; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .controls-section { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .search-box { margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; }
+        .search-box input:focus { outline: none; border-color: #1a237e; }
+        .filters { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 15px; }
+        .filters label { font-weight: 600; }
+        .filters select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; }
+        .reset-btn { padding: 8px 16px; background: #f5f5f5; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .reset-btn:hover { background: #e8e8e8; }
+        .stats { text-align: right; font-size: 0.9rem; color: #666; margin-top: 15px; }
+        .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .section { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .section-header { background: #1a237e; color: white; padding: 20px; font-size: 1.2rem; font-weight: 700; }
+        .section-content { padding: 20px; max-height: 600px; overflow-y: auto; }
+        .form-card { padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 12px; cursor: pointer; background: white; transition: all 0.3s; }
+        .form-card:hover { border-color: #1a237e; box-shadow: 0 4px 12px rgba(26, 35, 126, 0.15); }
+        .form-card.active { background: #f8f9ff; border-color: #1a237e; box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2); }
+        .form-title { font-weight: 700; color: #1a237e; margin-bottom: 8px; font-size: 0.95rem; }
+        .form-meta { display: flex; gap: 10px; font-size: 0.8rem; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+        .badge-category { background: #e3f2fd; color: #1a237e; }
+        .badge-type { background: #f3e5f5; color: #6a1b9a; }
+        .preview-empty { text-align: center; padding: 60px 20px; color: #999; }
+        .preview-empty-icon { font-size: 3rem; margin-bottom: 15px; }
+        .preview-title { font-size: 1.4rem; font-weight: 700; color: #1a237e; margin-bottom: 20px; }
+        .preview-info { margin: 20px 0; padding: 15px; background: #f5f5f5; border-left: 4px solid #1a237e; }
+        .preview-info-row { display: flex; padding: 8px 0; border-bottom: 1px solid #e0e0e0; }
+        .preview-info-row:last-child { border-bottom: none; }
+        .preview-label { font-weight: 600; color: #1a237e; width: 80px; }
+        .preview-value { flex: 1; color: #333; }
+        .preview-description { margin: 20px 0; line-height: 1.8; }
+        .action-buttons { display: flex; gap: 10px; margin-top: 25px; }
+        .btn { flex: 1; padding: 12px 20px; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; transition: all 0.3s; }
+        .btn-primary { background: #1a237e; color: white; }
+        .btn-primary:hover { background: #0d1351; box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3); }
+        .btn-secondary { background: #f5f5f5; color: #333; border: 1px solid #ddd; }
+        .btn-secondary:hover { background: #e8e8e8; }
+        .empty-state { text-align: center; padding: 40px 20px; color: #999; }
+        .empty-state-icon { font-size: 2rem; margin-bottom: 10px; }
+        footer { text-align: center; margin-top: 60px; padding: 30px 20px; background: rgba(26, 35, 126, 0.05); border-radius: 12px; color: #666; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .main-content { grid-template-columns: 1fr; } header h1 { font-size: 2rem; } }
+        @media (max-width: 768px) { .container { padding: 15px; } header h1 { font-size: 1.5rem; } .filters { flex-direction: column; align-items: stretch; } .filters select { width: 100%; } }
     </style>
 </head>
 <body>
@@ -401,228 +61,39 @@
         <header>
             <h1>🏫 전북특별자치도교육청 서식 꾸러미</h1>
             <p>전북교육청 서식 및 자료를 한곳에서 검색하고 다운로드하세요</p>
-            <div class="info-box">
-                자료 출처: 전북특별자치도교육청 · 2026-07-26 기준
-            </div>
+            <div class="info-box">자료 출처: 전북특별자치도교육청 · 2026-07-26 기준</div>
         </header>
         
         <div class="controls-section">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="서식명이나 키워드를 입력하세요..." autocomplete="off">
+                <input type="text" id="searchInput" placeholder="서식명이나 키워드를 입력하세요...">
             </div>
             
             <div class="filters">
-                <label for="categoryFilter">분류:</label>
+                <label>분류:</label>
                 <select id="categoryFilter">
                     <option value="">전체</option>
                     <option value="교무">교무</option>
                     <option value="담임">담임</option>
                     <option value="학사">학사</option>
-                    <option value="보건">보건</option>
-                    <option value="안전">안전</option>
-                    <option value="정보">정보</option>
                 </select>
                 
-                <label for="typeFilter">파일형식:</label>
+                <label>파일형식:</label>
                 <select id="typeFilter">
                     <option value="">전체</option>
-                    <option value="hwp">한글(HWP)</option>
-                    <option value="xlsx">엑셀(XLSX)</option>
+                    <option value="hwp">HWP</option>
+                    <option value="xlsx">XLSX</option>
                     <option value="pdf">PDF</option>
                 </select>
                 
-                <button class="reset-btn" onclick="resetFilters()">초기화</button>
+                <button class="reset-btn" id="resetBtn">초기화</button>
             </div>
             
-            <div class="stats">
-                검색 결과: <span id="resultCount">0</span>개
-            </div>
+            <div class="stats">검색 결과: <span id="resultCount">0</span>개</div>
         </div>
         
         <div class="main-content">
-            <div class="form-list-section">
+            <div class="section">
                 <div class="section-header">📋 서식 목록</div>
-                <div class="form-list" id="formList">
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📂</div>
-                        <p>서식을 선택해주세요</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="preview-section">
-                <div class="section-header">👁️ 미리보기</div>
-                <div class="preview-content" id="previewContent">
-                    <div class="empty-state">
-                        <div class="empty-state-icon">👈</div>
-                        <p>왼쪽 목록에서 서식을 클릭하여<br>상세 정보를 확인하세요</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="footer-note">
-                <strong>⚠️ 중요 안내:</strong> 이 사이트는 전북특별자치도교육청의 공식 사이트가 아입니다. 
-                서식의 모든 권리는 전북특별자치도교육청에 있습니다.
-            </div>
-            <div class="footer-note">
-                <strong>📧 문의 및 건의:</strong> 서식이 필요하거나 오류를 발견하신 경우, 
-                전북특별자치도교육청에 직접 문의해주세요.
-            </div>
-        </footer>
-    </div>
-    
-    <script>
-        let allForms = [];
-        let filteredForms = [];
-        
-        // 초기 로드
-        async function loadForms() {
-            try {
-                const response = await fetch('forms.json');
-                allForms = await response.json();
-                displayForms(allForms);
-                console.log(`✓ ${allForms.length}개의 서식을 로드했습니다.`);
-            } catch (error) {
-                console.error('서식 로드 오류:', error);
-                document.getElementById('formList').innerHTML = 
-                    '<div class="empty-state"><p>⚠️ 서식을 불러올 수 없습니다.</p></div>';
-            }
-        }
-        
-        // 검색 및 필터 함수
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const fileType = document.getElementById('typeFilter').value;
-            
-            filteredForms = allForms.filter(form => {
-                const matchesSearch = form.title.toLowerCase().includes(searchTerm) ||
-                                     form.description.toLowerCase().includes(searchTerm) ||
-                                     form.subcategory.toLowerCase().includes(searchTerm);
-                const matchesCategory = !category || form.category === category;
-                const matchesType = !fileType || form.file_type === fileType;
-                
-                return matchesSearch && matchesCategory && matchesType;
-            });
-            
-            displayForms(filteredForms);
-            document.getElementById('resultCount').textContent = filteredForms.length;
-        }
-        
-        // 목록 표시
-        function displayForms(forms) {
-            const listDiv = document.getElementById('formList');
-            
-            if (forms.length === 0) {
-                listDiv.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">🔍</div>
-                        <p>검색 결과가 없습니다</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            listDiv.innerHTML = forms.map((form) => `
-                <div class="form-card" onclick="showPreview('${form.id}')">
-                    <div class="form-title">${form.title}</div>
-                    <div class="form-meta">
-                        <span class="badge badge-category">${form.category}</span>
-                        <span class="badge badge-type">${form.file_type.toUpperCase()}</span>
-                        <span style="color: #999;">${form.date}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        // 미리보기 표시
-        function showPreview(formId) {
-            const form = filteredForms.find(f => f.id === formId);
-            if (!form) return;
-            
-            // 이전 활성 카드 제거
-            document.querySelectorAll('.form-card').forEach(el => el.classList.remove('active'));
-            // 현재 카드 활성화
-            document.querySelectorAll('.form-card')[index].classList.add('active');
-            
-            // 이전 활성 카드에서 active 클래스 제거
-            document.querySelectorAll('.form-card').forEach(el => el.classList.remove('active'));
-            
-            // 현재 카드에 active 클래스 추가
-            const currentCard = document.querySelector(`[onclick*="showPreview('${form.id}')"]`);
-            if (currentCard) currentCard.classList.add('active');
-            
-            const previewHTML = `
-                <div class="preview-active">
-                    <div class="preview-title">${form.title}</div>
-                    
-                    <div class="preview-info">
-                        <div class="preview-info-row">
-                            <span class="preview-label">분류</span>
-                            <span class="preview-value">${form.category} > ${form.subcategory}</span>
-                        </div>
-                        <div class="preview-info-row">
-                            <span class="preview-label">파일형식</span>
-                            <span class="preview-value">${form.file_type.toUpperCase()}</span>
-                        </div>
-                        <div class="preview-info-row">
-                            <span class="preview-label">등록일</span>
-                            <span class="preview-value">${form.date}</span>
-                        </div>
-                        <div class="preview-info-row">
-                            <span class="preview-label">출처</span>
-                            <span class="preview-value">${form.source}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="preview-description">
-                        <strong>설명:</strong><br>${form.description}
-                    </div>
-                    
-                    <div class="action-buttons">
-                        <a href="${form.download_url}" target="_blank" class="btn btn-primary">
-                            📥 다운로드
-                        </a>
-                        <button class="btn btn-secondary" onclick="copyLink('${form.download_url}')">
-                            🔗 링크 복사
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('previewContent').innerHTML = previewHTML;
-        }
-        
-        // 링크 복사
-        function copyLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                alert('다운로드 링크가 복사되었습니다.');
-            });
-        }
-        
-        // 필터 초기화
-        function resetFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('categoryFilter').value = '';
-            document.getElementById('typeFilter').value = '';
-            document.getElementById('previewContent').innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">👈</div>
-                    <p>왼쪽 목록에서 서식을 클릭하여<br>상세 정보를 확인하세요</p>
-                </div>
-            `;
-            applyFilters();
-        }
-        
-        // 이벤트 리스너
-        document.getElementById('searchInput').addEventListener('keyup', applyFilters);
-        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
-        document.getElementById('typeFilter').addEventListener('change', applyFilters);
-        
-        // 페이지 로드 시 실행
-        loadForms();
-    </script>
-</body>
-</html>
+                <div class="section-content" id="formList">
+                    <div
